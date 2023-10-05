@@ -1,6 +1,8 @@
 import os
 import sys
 import time
+import string
+import random
 
 def add_text_to_readme():
     with open("readme.md", "a") as file:
@@ -11,6 +13,15 @@ def delete_last_line_from_readme():
         lines = file.readlines()
     with open("readme.md", "w") as file:
         file.writelines(lines[:-1])
+
+def create_random_files_with_text():
+    for i in range(10):
+        with open("".join(random.choices(string.ascii_letters, k=10)) + ".txt", "w") as file:
+            file.write("".join(random.choices(string.ascii_letters, k=10)))
+
+def delete_random_files():
+    for i in range(10):
+        os.remove(str(i) + ".txt")
 
 def main():
     tempo = 300
@@ -23,8 +34,13 @@ def main():
     if os.system("git --version") != 0:
         print("git not found")
         return
-
-    add_text_to_readme()
+    while(tempo > 0):
+        print("Next commit in " + str(tempo) + " seconds")
+        tempo -= 1
+        sys.stdout.write("\033[F")
+        sys.stdout.write("\033[K")
+        time.sleep(1)
+    create_random_files_with_text()
 
     os.system("git add .")
     os.system("git commit -m \"Added text to readme.md\"")
@@ -38,7 +54,7 @@ def main():
             sys.stdout.write("\033[F")
             sys.stdout.write("\033[K")
             time.sleep(1)
-        delete_last_line_from_readme()
+        delete_random_files()
 
         os.system("git add .")
         os.system("git commit -m \"Deleted text from readme.md\"")
@@ -51,7 +67,7 @@ def main():
             sys.stdout.write("\033[K")
             time.sleep(1)
 
-        add_text_to_readme()
+        create_random_files_with_text()
         os.system("git add .")
         os.system("git commit -m \"Added text to readme.md\"")
         os.system("git push")
