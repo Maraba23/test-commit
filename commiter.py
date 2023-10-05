@@ -4,7 +4,7 @@ import time
 
 def main():
 
-    commits = input("How many commits do you want to make? ")
+    commits = int(input("How many commits do you want to make? "))
 
     #check readme.md
     if not os.path.exists("readme.md"):
