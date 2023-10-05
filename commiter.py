@@ -13,6 +13,7 @@ def delete_last_line_from_readme():
         file.writelines(lines[:-1])
 
 def main():
+    time = 300
     commits = int(input("How many commits do you want to make? "))
 
     if not os.path.exists("readme.md"):
@@ -30,13 +31,25 @@ def main():
     os.system("git push")
 
     for i in range(commits):
-        time.sleep(30)
+        time = 300
+        while(time > 0):
+            print("Next commit in " + str(time) + " seconds")
+            time -= 1
+            sys.stdout.write("\033[F")
+            sys.stdout.write("\033[K")
+            time.sleep(1)
         delete_last_line_from_readme()
 
         os.system("git add .")
         os.system("git commit -m \"Deleted text from readme.md\"")
         os.system("git push")
-        time.sleep(30)
+        time = 300
+        while(time > 0):
+            print("Next commit in " + str(time) + " seconds")
+            time -= 1
+            sys.stdout.write("\033[F")
+            sys.stdout.write("\033[K")
+            time.sleep(1)
 
         add_text_to_readme()
         os.system("git add .")
