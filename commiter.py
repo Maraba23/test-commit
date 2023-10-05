@@ -21,7 +21,8 @@ def create_random_files_with_text():
 
 def delete_random_files():
     for i in range(10):
-        os.remove(str(i) + ".txt")
+        # remove all txt files
+        os.remove("*.txt")
 
 def main():
     tempo = 300
