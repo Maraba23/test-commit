@@ -15,27 +15,24 @@ def delete_last_line_from_readme():
 def main():
     commits = int(input("How many commits do you want to make? "))
 
-    # Check readme.md
     if not os.path.exists("readme.md"):
         print("readme.md not found")
         return
 
-    # Check if git is installed
     if os.system("git --version") != 0:
         print("git not found")
         return
 
     add_text_to_readme()
 
-    # Commit and push
     os.system("git add .")
     os.system("git commit -m \"Added text to readme.md\"")
     os.system("git push")
 
     for i in range(commits):
+        time.sleep(30)
         delete_last_line_from_readme()
 
-        # Commit and push
         os.system("git add .")
         os.system("git commit -m \"Deleted text from readme.md\"")
         os.system("git push")
