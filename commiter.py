@@ -25,7 +25,7 @@ def main():
     #commit and push
     os.system("git add .")
     os.system("git commit -m \"Added text to readme.md\"")
-    os.system("git push -u origin master")
+    os.system("git push")
 
     #loop (delete the text, then add it again)
     for i in range(commits):
