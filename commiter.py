@@ -25,7 +25,7 @@ def delete_random_files():
         os.remove("*.txt")
 
 def main():
-    tempo = 300
+    tempo = 200
     commits = int(input("How many commits do you want to make? "))
 
     if not os.path.exists("readme.md"):
@@ -44,11 +44,11 @@ def main():
     create_random_files_with_text()
 
     os.system("git add .")
-    os.system("git commit -m \"Added text to readme.md\"")
+    os.system("git commit -m \"Testing the bot\"")
     os.system("git push")
 
     for i in range(commits):
-        tempo = 300
+        tempo = 200
         while(tempo > 0):
             print("Next commit in " + str(tempo) + " seconds")
             tempo -= 1
@@ -60,7 +60,7 @@ def main():
         os.system("git add .")
         os.system("git commit -m \"Deleted text from readme.md\"")
         os.system("git push")
-        tempo = 300
+        tempo = 200
         while(tempo > 0):
             print("Next commit in " + str(tempo) + " seconds")
             tempo -= 1
