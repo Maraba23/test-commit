@@ -26,7 +26,8 @@ def delete_random_files():
             os.remove(filename)
 
 def main():
-    tempo = 300
+    tempo_input = int(input("How many seconds do you want to wait before the first commit? "))
+    tempo = tempo_input
     commits = int(input("How many commits do you want to make? "))
 
     if not os.path.exists("readme.md"):
@@ -49,7 +50,7 @@ def main():
     os.system("git push")
 
     for i in range(commits):
-        tempo = 300
+        tempo = tempo_input
         while(tempo > 0):
             print("Next commit in " + str(tempo) + " seconds")
             tempo -= 1
@@ -61,7 +62,7 @@ def main():
         os.system("git add .")
         os.system("git commit -m \"Deleted txt files\"")
         os.system("git push")
-        tempo = 300
+        tempo = tempo_input
         while(tempo > 0):
             print("Next commit in " + str(tempo) + " seconds")
             tempo -= 1
