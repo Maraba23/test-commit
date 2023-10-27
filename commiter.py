@@ -20,9 +20,10 @@ def create_random_files_with_text():
             file.write("".join(random.choices(string.ascii_letters, k=10)))
 
 def delete_random_files():
-    for i in range(10):
-        # remove all txt extension files from the current directory
-        os.system("rm *.txt")
+    # delete all txt files from the current directory
+    for filename in os.listdir():
+        if filename.endswith(".txt"):
+            os.remove(filename)
 
 def main():
     tempo = 100
@@ -48,7 +49,7 @@ def main():
     os.system("git push")
 
     for i in range(commits):
-        tempo = 200
+        tempo = 20
         while(tempo > 0):
             print("Next commit in " + str(tempo) + " seconds")
             tempo -= 1
