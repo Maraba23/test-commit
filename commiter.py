@@ -21,11 +21,11 @@ def create_random_files_with_text():
 
 def delete_random_files():
     for i in range(10):
-        # remove all txt files
-        os.remove("*.txt")
+        # remove all txt extension files from the current directory
+        os.system("rm *.txt")
 
 def main():
-    tempo = 200
+    tempo = 100
     commits = int(input("How many commits do you want to make? "))
 
     if not os.path.exists("readme.md"):
