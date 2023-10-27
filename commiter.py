@@ -59,7 +59,7 @@ def main():
         delete_random_files()
 
         os.system("git add .")
-        os.system("git commit -m \"Deleted text from readme.md\"")
+        os.system("git commit -m \"Deleted txt files\"")
         os.system("git push")
         tempo = 300
         while(tempo > 0):
@@ -71,7 +71,7 @@ def main():
 
         create_random_files_with_text()
         os.system("git add .")
-        os.system("git commit -m \"Added text to readme.md\"")
+        os.system("git commit -m \"Added txt files\"")
         os.system("git push")
 
 if __name__ == "__main__":
